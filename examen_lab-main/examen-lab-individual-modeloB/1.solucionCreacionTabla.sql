@@ -1,0 +1,12 @@
+
+
+CREATE OR REPLACE TABLE Pagos (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	fechaPago DATE NOT NULL,
+	cantidadPagada DECIMAL (10, 2) NOT NULL CHECK(cantidadPagada >= 0),
+	revisado BOOLEAN NOT NULL DEFAULT FALSE,
+	pedidoId INT NOT NULL,
+	FOREIGN KEY (pedidoId) REFERENCES Pedidos(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
